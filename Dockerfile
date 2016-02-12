@@ -25,7 +25,7 @@ RUN chmod 600 /root/.ssh/id_rsa
 # Create known_hosts
 RUN touch /root/.ssh/known_hosts
 # Add github key
-RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN ssh-keyscan bitbucket.com >> /root/.ssh/known_hosts
 
 ENV BRANCH master
 RUN cd /var/www; git clone -b ${BRANCH} git@bitbucket.org:glacialman/tracking.git >> /tmp/log 2>&1
