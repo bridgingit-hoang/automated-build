@@ -1,0 +1,35 @@
+{
+  "grunt": {
+    "soyJarPath": "/var/www/lib/google",
+    "soydevextract": false
+  },
+  "memcached": {
+    "serverlocations": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com:11211"
+  },
+  "redis": {
+    "host": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com"
+  },
+  "redislog": {
+    "host": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com"
+  },
+  "worker": {
+    "queuetype": "rsmq"
+  },
+  "workerqueue": {
+    "redisHost": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com"
+  },
+  "logger": {
+    "logFilePath": "/var/log/milonst"
+  },
+  "server_deviceapi": {
+    "host": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com",
+    "data_url": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com:3002"
+  },
+  "server_care": {
+    "device_endpoint_host": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com:3002",
+    "work_server_url": "http://ec2-54-195-83-18.eu-west-1.compute.amazonaws.com:3002"
+  },
+  "api_endpoint": {
+    "stats": "//teststudio.miloncare.com"
+  }
+}
