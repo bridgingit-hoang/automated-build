@@ -13,7 +13,6 @@ RUN npm install -g grunt-cli coffee-script coffee stylus supervisor http-server 
 RUN npm config set strict-ssl false
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm update npm -g;
-RUN npm -g install forever
 
 # Make ssh dir
 RUN mkdir /root/.ssh/
