@@ -1,3 +1,3 @@
 #! /bin/bash
 
-exec node /var/www/milonst/server.js >> /mnt/milon-st.log 2>&1
+exec forever start -c coffee /var/www/tracking/gt.coffee >> /tracking/tracking.log 2>&1

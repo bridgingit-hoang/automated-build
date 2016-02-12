@@ -13,6 +13,7 @@ RUN npm install -g grunt-cli coffee-script coffee stylus supervisor http-server 
 RUN npm config set strict-ssl false
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm update npm -g;
+RUN npm -g install forever
 
 # Make ssh dir
 RUN mkdir /root/.ssh/
@@ -27,28 +28,16 @@ RUN touch /root/.ssh/known_hosts
 # Add github key
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
-# Install App
-RUN rm -rf /var/www/*
-RUN mkdir /var/www; mkdir /var/www/lib; mkdir /var/www/lib/google
-ADD docker/google/* /var/www/lib/google/
-RUN chmod 700 -R /var/www/lib/
-
-ENV BRANCH feature_polar_aws_docker_container
-RUN cd /var/www; git clone -b ${BRANCH} git@github.com:smrchy/milonst.git >> /tmp/log 2>&1
-#RUN npm config set registry http://registry.npmjs.eu/; npm --registry http://registry.npmjs.eu/ -g install npm
-RUN cd /var/www/milonst; rm -rf node_modules; npm cache clean; npm install;
-
-#Add Config File
-ADD docker/config/* /var/www/milonst/
-RUN cd /var/www/milonst; grunt build
+ENV BRANCH master
+RUN cd /var/www; git clone -b ${BRANCH} git@bitbucket.org:glacialman/tracking.git >> /tmp/log 2>&1
 
 # Jump to app folder and run app
 ADD docker/run.sh /root/.bin/run.sh
 RUN chmod 600 /root/.bin/run.sh
 
 ENTRYPOINT ["/bin/bash"]
-EXPOSE 3000
+EXPOSE 1987
 # Usage
-# docker run -it -p 3000:3000 --add-host dockerhost:`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'` hoangmilon/milonst /root/.bin/run.sh
-# docker exec -it hoangmilon/milonst bash
-# docker exec -i -t hoangmilon/milonst bash
+# docker run -it -p 1987:1987 --add-host dockerhost:`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'` bridgingithoang/automated-build /root/.bin/run.sh
+# docker exec -it bridgingithoang/automated-build
+# docker exec -i -t bridgingithoang/automated-build
