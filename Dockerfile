@@ -39,6 +39,6 @@ RUN sudo chmod 600 /root/.bin/run.sh
 ENTRYPOINT ["/bin/bash"]
 EXPOSE 1987
 # Usage
-# docker run -it -p 1987:1987 --add-host dockerhost:`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'` bridgingithoang/automated-build /root/.bin/run.sh
-# docker exec -it bridgingithoang/automated-build
-# docker exec -i -t bridgingithoang/automated-build
+# docker run -it -p 1987:1987 --add-host dockerhost:`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'` bridgingit-hoang/automated-build /root/.bin/run.sh
+# docker exec -it bridgingit-hoang/automated-build
+# docker exec -i -t bridgingit-hoang/automated-build
