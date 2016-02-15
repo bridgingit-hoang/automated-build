@@ -16,16 +16,15 @@ RUN npm update npm -g;
 
 # Make ssh dir
 RUN mkdir /root/.ssh/
-RUN mkdir /root/.bin/
 
 # Copy over private key, and set permissions
-ADD docker/ssh/id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
+ADD docker/ssh/id_rsa ~/.ssh/id_rsa
+RUN chmod 600 ~/.ssh/id_rsa
 
 # Create known_hosts
-RUN touch /root/.ssh/known_hosts
+RUN touch ~/.ssh/known_hosts
 # Add github key
-RUN ssh-keyscan bitbucket.com >> /root/.ssh/known_hosts
+RUN ssh-keyscan bitbucket.com >> ~/.ssh/known_hosts
 
 ENV BRANCH master
 RUN cd /var/www; git clone -b ${BRANCH} git@bitbucket.org:glacialman/tracking.git >> /tmp/log 2>&1
